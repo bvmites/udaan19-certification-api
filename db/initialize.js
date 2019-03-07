@@ -1,6 +1,6 @@
 const {MongoClient} = require('mongodb')
 
-MongoClient.connect("mongodb+srv://udaan18:udaan18@udaan18-dj1tc.mongodb.net/",(err,client)=>{
+MongoClient.connect(process.env.DB,(err,client)=>{
 	if (err) {
     	return console.log('Unable to connect to MongoDB server');
   	}
