@@ -15,7 +15,7 @@ module.exports = (db) => {
 						code: event.code
 					})
 				}
-			})
+			});
 			var status = await database.checkParticipantInCertificateCollection(req.body.phone,req.body.eventName);
 			if( status === -1 ) {
 				var final = await database.addParticipant(req.body.phone,req.body.eventName);
@@ -26,7 +26,7 @@ module.exports = (db) => {
 			})
 		}
 
-	})
+	});
 
 	router.post('/verify',async (req,res)=>{
 		var result = await database.getVerified(req.body.name,req.body.eventName,req.body.code);
@@ -39,7 +39,7 @@ module.exports = (db) => {
 				error: "Invalid code or name"
 			})
 		}
-	})
+	});
 
 	return router;
 }

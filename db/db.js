@@ -37,5 +37,11 @@ module.exports = (db) => ({
 			"events.eventName":eventName,
 			"events.code":code
 		})
+	},
+	getParticipantTalks: (phone)=>{
+		return db.collection('Bvm-Talks').findOne({phone:phone});
+	},
+	checkParticipantTalks: (name, code)=>{
+		return db.collection('Bvm-Talks').findOne({name:name,code:code});
 	}
-})
+});
