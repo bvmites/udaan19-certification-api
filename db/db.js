@@ -1,4 +1,4 @@
-const {MongoClient,ObjectID} = require('mongodb')
+const {MongoClient,ObjectID} = require('mongodb');
 
 module.exports = (db) => ({
 	checkAttendance : (phone,eventName) => {
@@ -17,7 +17,7 @@ module.exports = (db) => ({
 		return db.collection('Event-Certificates').findOne({
 			eventName
 		}).then((event)=>{
-			return event.certificates.indexOf(phone)
+			return event.certificates.indexOf(phone);
 		})
 	},
 	addParticipant: (phone,eventName) => {

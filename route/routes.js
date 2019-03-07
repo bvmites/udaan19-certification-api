@@ -1,14 +1,12 @@
-const router = require('express').Router()
-// const Validator = require('jsonschema').Validator;
-// const validator = new Validator();
+const router = require('express').Router();
 
 module.exports = (db) => {
-	const database = require('./../db/db.js')(db)
-	// console.log(database)
+	const database = require('./../db/db.js')(db);
+
 	router.post('/getCertificate',async (req,res)=>{
 		try {
-			var result = await database.checkAttendance(req.body.phone,req.body.eventName)
-			var success = await database.getParticipant(req.body.phone,req.body.eventName)
+			var result = await database.checkAttendance(req.body.phone,req.body.eventName);
+			var success = await database.getParticipant(req.body.phone,req.body.eventName);
 			success.events.forEach((event)=>{
 				if(event.eventName === req.body.eventName) {
 					res.status(200).send({
@@ -18,9 +16,9 @@ module.exports = (db) => {
 					})
 				}
 			})
-			var status = await database.checkParticipantInCertificateCollection(req.body.phone,req.body.eventName)
+			var status = await database.checkParticipantInCertificateCollection(req.body.phone,req.body.eventName);
 			if( status === -1 ) {
-				var final = await database.addParticipant(req.body.phone,req.body.eventName)
+				var final = await database.addParticipant(req.body.phone,req.body.eventName);
 			}
 		} catch (e) {
 			res.status(400).send({
@@ -31,7 +29,7 @@ module.exports = (db) => {
 	})
 
 	router.post('/verify',async (req,res)=>{
-		var result = await database.getVerified(req.body.name,req.body.eventName,req.body.code)
+		var result = await database.getVerified(req.body.name,req.body.eventName,req.body.code);
 		if (result) {
 			res.status(200).send({
 				success:"User is present"
@@ -43,5 +41,5 @@ module.exports = (db) => {
 		}
 	})
 
-	return router
+	return router;
 }
