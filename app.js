@@ -18,4 +18,4 @@ MongoClient.connect(process.env.DB,(err,client)=>{
   	app.use('/',router(db))
 })
 var port = parseInt(process.env.PORT) || 3000
-app.listen(port,()=>console.log('Connected to port 3000'));
+app.listen(port,()=>console.log(`Connected to port ${port}`));
