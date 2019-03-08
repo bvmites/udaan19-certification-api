@@ -3,11 +3,13 @@ const bodyParser = require('body-parser');
 const {MongoClient} = require('mongodb');
 const dotenv = require('dotenv');
 dotenv.config();
+const cors = require('cors');
 
 var app = express();
 app.use(bodyParser.json());
 const router = require('./route/routes.js');
 const talks = require('./route/talks');
+app.use(cors());
 
 
 MongoClient.connect(process.env.DB,(err,client)=>{

@@ -19,6 +19,7 @@
   "homepage": "https://github.com/bvmites/udaan19-certification-api#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
     "csv-parse": "^4.3.3",
     "dotenv": "^6.2.0",
     "express": "^4.16.4",
