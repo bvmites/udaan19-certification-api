@@ -9,7 +9,7 @@ module.exports = (db) => {
 			let event = req.body.eventName;
 
 			let participant = await database.getParticipant(phone, event);
-			console.log(participant);
+			// console.log(participant);
 			res.status(200).json(participant);
 
 		} catch (e) {
@@ -22,13 +22,9 @@ module.exports = (db) => {
 	router.post('/verify',async (req,res)=>{
 		var result = await database.getVerified(req.body.name,req.body.eventName,req.body.code);
 		if (result) {
-			res.status(200).send({
-				success:"User is present"
-			})
+			res.status(200).json({message:"True"});
 		} else {
-			res.status(400).send({
-				error: "Invalid code or name"
-			})
+			res.status(400).json({message:"False"});
 		}
 	});
 

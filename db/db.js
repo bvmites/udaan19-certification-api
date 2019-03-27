@@ -5,10 +5,10 @@ module.exports = (db) => ({
 		return db.collection('newAttendance').findOne({phone:phone, eventName:eventName});
 	},
 	getVerified : (name,eventName,code)=>{
-		return db.collection('participants').findOne({
-			name,
-			"events.eventName":eventName,
-			"events.code":code
+		return db.collection('newAttendance').findOne({
+			name: name,
+			eventName: eventName,
+			code: code
 		})
 	},
 	getParticipantTalks: (phone)=>{
