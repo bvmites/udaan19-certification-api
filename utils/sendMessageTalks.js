@@ -34,6 +34,7 @@ function sendMessage(contacts){
             // console.log(success)
         });
         if (result.status==="success") {
+            console.log(success);
             console.log("success");
         } else {
             console.log("failure");
@@ -49,12 +50,13 @@ function sendMessage(contacts){
     const db = client.db('Udaan-19');
 
     let data = await db.collection('Bvm-Talks').find({}).toArray();
-    // let phones = ['7069307537'];
     let phones = [];
+    // let phones = ["7069307537"];
 
-    // data.forEach(obj=>{
-    //     phones.push(obj.phone);
-    // });
+    data.forEach(obj=>{
+        phones.push(obj.phone);
+    });
+    console.log(phones.length);
     sendMessage(phones);
 
 })();

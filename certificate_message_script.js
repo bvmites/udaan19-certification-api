@@ -2,9 +2,9 @@ const MongoClient = require("mongodb");
 const httpRequest = require('request-promise-native');
 require("request");
 
- const SMS_SENDER ='BVMSMS';
- const SMS_API_KEY = 'nQUvI2XjO3M-W9uZ3C5SJtuSb7J0oszstuigTazIfT';
- var SMS_TEST;
+const SMS_SENDER ='BVMSMS';
+const SMS_API_KEY = 'nQUvI2XjO3M-W9uZ3C5SJtuSb7J0oszstuigTazIfT';
+var SMS_TEST;
 
 const sender = SMS_SENDER;
 const apiKey = SMS_API_KEY;

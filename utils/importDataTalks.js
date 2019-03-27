@@ -11,12 +11,12 @@ const inputFile = './Data/BVM-Talks/data.csv';
 function readData(fileName) {
     const data = fs.readFileSync(fileName);
     return parse(data).map(column=>{
-        const thestr = column[2]+column[3];
+        const thestr = column[1]+column[2];
         let code = crypto.createHmac('sha512',process.env.CODE_KEY).update(thestr).digest('hex').toString().slice(0,8);
 
         return{
-            name: column[2],
-            phone: column[3],
+            name: column[1],
+            phone: column[2],
             code: code
         }
     }).slice(1);

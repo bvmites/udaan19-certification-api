@@ -10,12 +10,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 const logger = require('morgan');
 app.use(logger('dev'));
-const router = require('./route/routes.js');
+const router = require('./route/routes');
 const talks = require('./route/talks');
 app.use(cors());
 
 
-MongoClient.connect(process.env.DB,(err,client)=>{
+MongoClient.connect(process.env.DB,{ useNewUrlParser: true },(err,client)=>{
 	if (err) {
     	return console.log('Unable to connect to MongoDB server');
   	}

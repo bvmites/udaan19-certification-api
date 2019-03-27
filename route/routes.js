@@ -5,27 +5,18 @@ module.exports = (db) => {
 
 	router.post('/getCertificate',async (req,res)=>{
 		try {
-			var result = await database.checkAttendance(req.body.phone,req.body.eventName);
-			var success = await database.getParticipant(req.body.phone,req.body.eventName);
-			success.events.forEach((event)=>{
-				if(event.eventName === req.body.eventName) {
-					res.status(200).send({
-						name : success.name,
-						eventName:event.eventName,
-						code: event.code
-					})
-				}
-			});
-			var status = await database.checkParticipantInCertificateCollection(req.body.phone,req.body.eventName);
-			if( status === -1 ) {
-				var final = await database.addParticipant(req.body.phone,req.body.eventName);
-			}
+			let phone = req.body.phone;
+			let event = req.body.eventName;
+
+			let participant = await database.getParticipant(phone, event);
+			console.log(participant);
+			res.status(200).json(participant);
+
 		} catch (e) {
 			res.status(400).send({
 				error: e.message
 			})
 		}
-
 	});
 
 	router.post('/verify',async (req,res)=>{
@@ -42,4 +33,4 @@ module.exports = (db) => {
 	});
 
 	return router;
-}
+};
